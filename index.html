@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -84,23 +84,22 @@
 				<section>
 					<section>
 						<h2>Spark Architecture Model</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<p>Coordination is done by the SparkContext object in your main program(called the driver program)</p>
 						<br>
 						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							<img data-src="/images/cluster-overview.png" alt="Down arrow">
 						</a>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<h2>Cluster manager</h2>
+						<p>An external service for acquiring resources on the cluster (e.g. standalone manager, Mesos, YARN)</p>
+						<img data-src="/images/cluster-overview.png" alt="Down arrow">
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
+						<h2>Worker Node</h2>
+						<p>Any node that can run application code in the cluster</p>
 						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						<img data-src="/images/cluster-overview.png" alt="Down arrow">
 						</a>
 					</section>
 				</section>
