@@ -63,19 +63,13 @@
 					<h2>What is Apache Spark?</h2>
 					<ul>
 						<li>Apache Spark is a fast, general engine for large-scale data processing</li>
-						  <p>
-						  - <a>Open sourced, developed at AMPlab at UC Berkeley</a> <br>
-					      </p>
+						  <p>- Open sourced, developed at AMPlab at UC Berkeley</p>
 						<li>Written in Scala</li>
-                          <p>
-						  - <a>Hybride programming language that runs on the JVM</a> <br>
-					      </p>
+                          <p>- Hybride programming language that runs on the JVM</p>
 						<li>Key Concepts</li>
-						  <p>
-						  - <a>Avoid the data bottleneck by distributing the data when it is stored</a> <br>
-						  - <a>Bring the processing to the data</a> <br>
-						  - <a>Store the data in memory</a> <br>
-					      </p>
+						  <p>- Avoid the data bottleneck by distributing the data when it is stored</p>
+						  <p>- Bring the processing to the data</p>
+						  <p>- Store the data in memory</p>
 					</ul>
 				</section>
 
@@ -112,21 +106,33 @@
 					<p>Spark’s core abstraction!</p>
 				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+			    <section>
+					<h2>RDD's</h2>
+					<ul>
+						<li>RDD(Resilient Distributed Dataset)</li>
+						  <p>-Resilient: if data in memory is lost, it can be recreated</p>
+						  <p>-Distributed: stored in memory across the cluster</p>
+					      <p>-Dataset: initial data can come from a file or created programmatically</p>
+						<li>RDD's are the fundamental unit of data in Spark</li> 
+						<li>Most of Spark programming is performing operations on RDD's</li> 
+					</ul>
 				</section>
 
 				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
+					<h2>RDD's</h2>
+					<ul>
+						<li>RDDs are immutable:</li>
+						  <p>-Each stage of a transformation will create a new RDD</p>
+						<li>RDDs are lazy:</li>
+						  <p>-A DAG (directed acyclic graph) of computation is constructed.</p>
+						  <p>-The actual data is processed only when results are requested.</p>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Transformations and Actions</h2>
+					<p>RDDs support two types of operations</p>
+					<img data-src="/images/transformations-and-action.png" alt="Down arrow">
 				</section>
 
 				<section data-markdown>
