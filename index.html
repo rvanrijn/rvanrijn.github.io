@@ -1,213 +1,361 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+    <title>reveal.js - The HTML Presentation Framework</title>
 
-		<meta name="description" content="Introduction into Apache Spark">
-		<meta name="author" content="Casper Koning - Robert van Rijn">
+    <meta name="description" content="Introduction into Apache Spark">
+    <meta name="author" content="Casper Koning - Robert van Rijn">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
+    <!-- Printing and PDF exports -->
+    <script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Meetup 13 July</h1>
-					<h3>Introduction into Apache Spark</h3>
-					<p>
-						<small>Created by  <a href="http://vanrijn.io">Casper Koning</a>
-                        and
-                        <a href="http://vanrijn.io">Robert van Rijn</a>
-						</small>
-					</p>
-				</section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Meetup 13 July</h1>
 
-				<section>
-					<h3>First we do the talk, then we do the walk</h3>
-				</section>
+            <h3>Introduction into Apache Spark</h3>
 
-				<section>
-					<h3>How did we get here?</h3>
-				</section>
-				
-				<section>
-					<h2>What is Apache Spark?</h2>
-					<ul>
-						<li>Apache Spark is a fast, general engine for large-scale data processing</li>
-						  <p>- Open sourced, developed at AMPlab at UC Berkeley</p>
-						<li>Written in Scala</li>
-                          <p>- Hybride programming language that runs on the JVM</p>
-						<li>Key Concepts</li>
-						  <p>- Avoid the data bottleneck by distributing the data when it is stored</p>
-						  <p>- Bring the processing to the data</p>
-						  <p>- Store the data in memory</p>
-					</ul>
-				</section>
+            <p>
+                <small>Created by <a href="http://vanrijn.io">Casper Koning</a>
+                    and
+                    <a href="http://vanrijn.io">Robert van Rijn</a>
+                </small>
+            </p>
+        </section>
 
-				</section>
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Spark Architecture Model</h2>
-						<p>Coordination is done by the SparkContext object in your main program(called the driver program)</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img data-src="/images/cluster-overview.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Cluster manager</h2>
-						<p>An external service for acquiring resources on the cluster (e.g. standalone manager, Mesos, YARN)</p>
-						<img data-src="/images/cluster-overview.png" alt="Down arrow">
-					</section>
-					<section>
-						<h2>Worker Node</h2>
-						<p>Any node that can run application code in the cluster</p>
-						<br>
-						<img data-src="/images/cluster-overview.png" alt="Down arrow">
-						</a>
-					</section>
-				</section>
+        <section>
+            <h3>First we do the talk, then we do the walk</h3>
+        </section>
 
-				<section>
-                  <h2>Execution model</h2>
-                  <p>- Create DAG of RDDs to represent computation</p>
-                  <p>- Create a logical execution plan for DAG</p>
-                  <p>- Schedule and execute individual tasks</p>
-			    </section>
+        <section>
+            <h3>How did we get here?</h3>
+        </section>
 
-				<section>
-					<h2>Spark Internals</h2>
-					<p>Resilient Distributed Datasets</p>
-					<br>
-					<img  width="768" height="354" data-src="/images/rdd.png" alt="Down arrow">
-					<p>Spark’s core abstraction!</p>
-				</section>
+        <section>
+            <h2>What is Apache Spark?</h2>
+            <ul>
+                <li>Apache Spark is a fast, general engine for large-scale data processing</li>
+                <p>- Open sourced, developed at AMPlab at UC Berkeley</p>
+                <li>Written in Scala</li>
+                <p>- Hybride programming language that runs on the JVM</p>
+                <li>Key Concepts</li>
+                <p>- Avoid the data bottleneck by distributing the data when it is stored</p>
 
-			    <section>
-					<h2>RDD's</h2>
-					<ul>
-						<li>RDD(Resilient Distributed Dataset)</li>
-						  <p>-Resilient: if data in memory is lost, it can be recreated</p>
-						  <p>-Distributed: stored in memory across the cluster</p>
-					      <p>-Dataset: initial data can come from a file or created programmatically</p>
-						<li>RDD's are the fundamental unit of data in Spark</li> 
-						<li>Most of Spark programming is performing operations on RDD's</li> 
-					</ul>
-				</section>
+                <p>- Bring the processing to the data</p>
 
-				<section>
-					<h2>RDD's</h2>
-					<ul>
-						<li>RDDs are immutable:</li>
-						  <p>-Each stage of a transformation will create a new RDD</p>
-						<li>RDDs are lazy:</li>
-						  <p>-A DAG (directed acyclic graph) of computation is constructed.</p>
-						  <p>-The actual data is processed only when results are requested.</p>
-					</ul>
-				</section>
+                <p>- Store the data in memory</p>
+            </ul>
+        </section>
 
-				<section>
-					<h2>Transformations and Actions</h2>
-					<p>RDDs support two types of operations</p>
-					<img data-src="/images/transformations-and-action.png" alt="Down arrow">
-				    </br>
-					<p>You can chain operations together, but keep in mind that the computation only runs when you call an action.</p>
-				</section>
+        </section>
+        <!-- Example of nested vertical slides -->
+        <section>
+            <section>
+                <h2>Spark Architecture Model</h2>
 
-				<section>
-					<h2>Time to rock and roll!</h2>
-					<ul>
-						<li>Spark Core: Spark101</li>
-						<li>Spark MLib: </li>
-						<li>Spark GraphX </li>
-						<li>Spark SQL </li>
-					</ul>
-				</section>
+                <p>Coordination is done by the SparkContext object in your main program(called the driver program)</p>
+                <br>
+                <a href="#" class="navigate-down">
+                    <img data-src="/images/cluster-overview.png" alt="Down arrow">
+                </a>
+            </section>
+            <section>
+                <h2>Cluster manager</h2>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+                <p>An external service for acquiring resources on the cluster (e.g. standalone manager, Mesos, YARN)</p>
+                <img data-src="/images/cluster-overview.png" alt="Down arrow">
+            </section>
+            <section>
+                <h2>Worker Node</h2>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+                <p>Any node that can run application code in the cluster</p>
+                <br>
+                <img data-src="/images/cluster-overview.png" alt="Down arrow">
+                </a>
+            </section>
+        </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+        <section>
+            <h2>Execution model</h2>
 
-    var nodes = document.querySelectorAll( selector );
+            <p>- Create DAG of RDDs to represent computation</p>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+            <p>- Create a logical execution plan for DAG</p>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+            <p>- Schedule and execute individual tasks</p>
+        </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+        <section>
+            <h2>Spark Internals</h2>
 
-			</div>
+            <p>Resilient Distributed Datasets</p>
+            <br>
+            <img width="768" height="354" data-src="/images/rdd.png" alt="Down arrow">
 
-		</div>
+            <p>Spark’s core abstraction!</p>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section>
+            <h2>RDD's</h2>
+            <ul>
+                <li>RDD(Resilient Distributed Dataset)</li>
+                <p>-Resilient: if data in memory is lost, it can be recreated</p>
 
-		<script>
+                <p>-Distributed: stored in memory across the cluster</p>
 
+                <p>-Dataset: initial data can come from a file or created programmatically</p>
+                <li>RDD's are the fundamental unit of data in Spark</li>
+                <li>Most of Spark programming is performing operations on RDD's</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>RDD's</h2>
+            <ul>
+                <li>RDDs are immutable:</li>
+                <p>-Each stage of a transformation will create a new RDD</p>
+                <li>RDDs are lazy:</li>
+                <p>-A DAG (directed acyclic graph) of computation is constructed.</p>
+
+                <p>-The actual data is processed only when results are requested.</p>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Transformations and Actions</h2>
+
+            <p>RDDs support two types of operations</p>
+            <img data-src="/images/transformations-and-action.png" alt="Down arrow">
+            </br>
+            <p>You can chain operations together, but keep in mind that the computation only runs when you call an
+                action.</p>
+        </section>
+
+        <section>
+            <h2>Time to rock and roll!</h2>
+            <ul>
+                <li>Spark Core: Spark101</li>
+                <li>Spark SQL</li>
+                <li>Spark MLlib</li>
+                <li>Spark Streaming</li>
+                <li>Spark GraphX</li>
+            </ul>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65">
+            <h2>Spark Core: Spark101</h2>
+        </section>
+
+
+        <section data-transition="slide" data-background="#aaae65">
+            <h2>Spark SQL</h2>
+        </section>
+
+        <section data-transition="slide" data-background="#4d1a65">
+            <h2>Spark MLlib</h2>
+            <ul>
+                <li>Machine Learning Basics</li>
+                <li>Programming Abstractions in Spark MLlib</li>
+                <li>Example: Predicting Digits</li>
+                <li>Getting YOUR hands dirty</li>
+            </ul>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Machine Learning Basics</h3>
+                </ul>
+                <img data-src="images/machineLearningPipeline.jpg"
+                     alt="Typical steps in a machine learning pipeline">
+            </section>
+            <section>
+                <h4>Gather and prepare data</h4>
+                <blockquote>"In Data Science, 80% of time is spent on data preparation, and the other 20% is spent on
+                    complaining about the need to prepare data"
+                </blockquote>
+            </section>
+            <section>
+                <h4>Select features</h4>
+                <blockquote>"In machine learning and statistics, feature selection, also known as variable selection,
+                    attribute selection or variable subset selection, is the process of selecting a subset of relevant
+                    features (variables, predictors) for use in model construction"
+                </blockquote>
+                <ul>
+                    <li>Current age for predicting the probability of ending up in hospital in the coming five years.
+                    </li>
+                    <li>$\frac{\text{weight}}{\text{length}^2}$ for predicting percentage of body fat.</li>
+                    <li>You fall in category $A$, so you are very likely to do $Z$.</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Train a model</h4>
+
+                <div>
+                    <img data-src="images/modelgraphs1.png" alt="Model examples" style="float:left" width="65%"/>
+                    <img data-src="images/J48_iris.jpg" alt="Iris decision tree" style="float:left" width="30%"/>
+                </div>
+            </section>
+            <section>
+                <h4>Select the best model</h4>
+                <ul>
+                    <li>Train model with different parameters.</li>
+                    <li>Model might be too complex, or too simple.</li>
+                    <li>Evaluate model on some validation set and use cross-validation to find an appropriate model.
+                    </li>
+                </ul>
+                <img data-src="images/model-selection.png" alt="Model selection" width="300"/>
+            </section>
+            <section>
+                <h4>Predict</h4>
+                <img data-src="images/xkcdFlowChart.png" alt="Flow Chart"/>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Programming Abstractions</h3>
+                <ul>
+                    <li>(Dense/Sparse) Vector</li>
+                    <li>LabeledPoint</li>
+                    <li>Matrix</li>
+                    <li>Rating</li>
+                    <li>Model classes</li>
+                    <li>Pipeline API</li>
+                </ul>
+            </section>
+            <section>
+                <h4>(Dense/Sparse) Vector</h4>
+                <ul>
+                    <li>A mathematical vector containing numbers.</li>
+                    <li>Both dense and sparse vectors.</li>
+                    <li>Constructed via the <code>mllib.linalg.Vectors</code> class.</li>
+                    <li>Do not provide arithmetic operations.</li>
+                </ul>
+                <pre><code>        val denseVec1 = Vectors.dense(1.0, 2.0, 3.0)
+        val denseVec2 = Vectors.dense(Array(1.0,2.0,3.0))
+        val sparseVec = Vectors.sparse(4, Array(0,2), Array(1.0, 2.0))</code></pre>
+            </section>
+            <section>
+                <h4>LabeledPoint</h4>
+                <blockquote>"LabeledPoint: A labeled data point for supervised learning algorithms such as
+                    classification and regression. Includes a feature vector and a label."
+                </blockquote>
+                <pre><code>             val lp = LabeledPoint(1,Vectors.dense(3.14,1.68,1.41))</code></pre>
+            </section>
+            <section>
+                <h4>Matrix</h4>
+                <ul>
+                    <li>Integer typed row and column indices</li>
+                    <li>Double values</li>
+                    <li>Different implementations for distribution purposes (RowMatrix, BlockMatrix, CoordinateMatrix,...).</li>
+                    <li>Dense and sparse variants</li>
+                </ul>
+                <img data-src="images/latex_matrix.png"/>
+            </section>
+            <section>
+                <h4>Rating</h4>
+                <blockquote>"Rating: A rating of a product by a user, used in the mllib.recommendation package for
+                    product recommendation."
+                </blockquote>
+                Nothing more than a
+                <pre><code>         case class Rating(user: Long, item: Long, rating: Double)</code></pre>
+            </section>
+            <section>
+                <h4>Model classes</h4>
+                <ul>
+                    <li>Work on RDD[Vector], RDD[LabeledPoint], etc.</li>
+                    <li>Often follow naming pattern: &lt;problem&gt;With&lt;Algorithm&gt;, e.g. LinearRegresionWithSGD.</li>
+                    <li>Either the model follows a builder pattern and has a run() method, or it has static train() and predict() methods:</li>
+                </ul>
+                <pre><code>val points: RDD[LabeledPoint] = // ...
+val lr = new LinearRegressionWithSGD()
+                    .setNumIterations(200)
+                    .setIntercept(true)
+val model = lr.run(points)</code></pre>
+
+                <pre><code>val model = DecisionTree.trainClassifier(
+                    input = data,
+                    numClasses = 10,
+                    categoricalFeaturesInfo = Map[Int, Int](),
+                    impurity = "gini",
+                    maxDepth = 15,
+                    maxBins = 5
+                    )</code></pre>
+            </section>
+            <section>
+                <h4>Pipeline API</h4>
+                <ul>
+                    <li>Advanced API for chaining machine learning operations in one workflow</li>
+                    <li>Uses the more advanced DataFrame features compared to RDD's of simple MLlib abstractions.</li>
+                    <li>Possible pipeline: Automated feature selection -> Model training -> Validation -> Model selection -> Prediction</li>
+                </ul>
+                <img data-src="images/machineLearningPipeline.jpg"/>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Example: Predicting Digits</h3>
+                <ul>
+                    <li>42,000 drawings of digits.</li>
+                    <li>Given a drawing, predict the written digit.</li>
+                    <li>Classification problem.</li>
+                    <li>Use Decision Tree approach.</li>
+                </ul>
+                <img data-src="images/digitData.png" width="300"/>  <img data-src="images/digit.png" width="265"/>
+            </section>
+            <section>
+                <h1>CODE TIME</h1>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Getting YOUR hands dirty</h3>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#21a165">
+            <h2>Spark Streaming</h2>
+        </section>
+
+
+        <section data-transition="slide" data-background="#aaaaaa">
+            <h2>Spark GraphX</h2>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -225,11 +373,10 @@ function linkify( selector ) {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }
 				]
 			});
-
-		</script>
-
-	</body>
+</script>
+</body>
 </html>
