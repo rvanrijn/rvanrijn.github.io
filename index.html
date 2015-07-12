@@ -324,9 +324,114 @@ val model = lr.run(points)</code></pre>
         </section>
 
 
-        <section data-transition="slide" data-background="#aaaaaa">
+        <section data-transition="slide">
             <h2>Spark GraphX</h2>
+            <ul>
+                <li>Graph Fundamentals</li>
+                <li>Programming Abstractions in Spark GraphX</li>
+                <li>Example: Medline Topics</li>
+                <li>Example: Maven Dependencies</li>
+            </ul>
         </section>
+        <section>
+            <section>
+                <h3>Spark GraphX &mdash; Graph Fundamentals</h3>
+                <blockquote>"In the most common sense of the term, a graph is an ordered pair $G=(V,E)$ compromising a set $V$ of vertices together with a set $E$ of edges, which are 2-element subsets of $V$."</blockquote>
+                <ul>
+                    <li>Graphs are all about relationships between objects.</li>
+                    <li>Vertices are the objects we are interested in.</li>
+                    <li>Edges describe the relationship between two vertices.</li>
+                    <li>The alternate way of looking at data, allows us to ask different questions, or give answers to questions much easier. These questions are typically about relationships.</li>
+                </ul>
+            </section>
+            <section>
+                <img data-src="images/graph.png" width="700"/>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Spark GraphX &mdash; Programming Abstractions in Spark</h3>
+                <blockquote>"In the most common sense of the term, a graph is an ordered pair $G=(V,E)$ compromising a set $V$ of vertices together with a set $E$ of edges, which are 2-element subsets of $V$."</blockquote>
+                <p align="left">Spark GraphX uses these terms as well, and has programming abstractions for them.</p>
+            </section>
+            <section>
+                <h3>Graph</h3>
+                <pre><code>class Graph[VD, ED] {
+        val vertices: VertexRDD[VD]
+        val edges: EdgeRDD[ED]
+}</code></pre>
+                <p>A very rich wrapper around a collection of vertices and edges.</p>
+            </section>
+            <section>
+                <h3>Vertices</h3>
+                <ul>
+                    <li>A VertexRDD[VD] is a rich wrapper around an RDD[(VertexID, VD)].</li>
+                    <li>A VertexID is a unique 64-bits Long. It allows for easy lookups and other operations on Vertices.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Edges</h3>
+<pre><code>case class Edge[ED] (srcId: VertexId, dstId: VertexId = 0,attr: ED)</code></pre>
+                <ul>
+                    <li>An EdgeRDD[ED] is an RDD[Edge[ED].</li>
+                    <li>An Edge[ED] is basically a 3-tuple of (VertexId, VertexId, ED), where the edge is directed and ED is the type of relationship between the two Vertices.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>EdgeTriplet</h3>
+                <img data-src="images/triplet.png"/>
+            </section>
+            <section>
+                <h3>Constructing a Graph</h3>
+                <p>Several options for creating a Graph in GraphX:</p>
+                <ul>
+                    <li>Graph.apply(vertices,edges), or Graph(vertices,edges) results in a Graph instance.</li>
+                    <li>The Graph object also has fromEdges() and fromEdgeTuples() methods for Graph instantiation.</li>
+                    <li>GraphLoader.edgeListFile() provides a way to load a graph from a list of edges on disk.</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Spark GraphX &mdash; Example: Medline Topics</h3>
+                <img data-src="images/medline.png" width="600"/>
+                <p>source: <a href="ftp://ftp.nlm.nih.gov/nlmdata/sample/medline">ftp://ftp.nlm.nih.gov/nlmdata/sample/medline</a></p>
+            </section>
+            <section>
+                <h3>Data</h3>
+                <div style="float:left;width:45%">
+                <ul>
+                    <li>XML documents &lt;MedlineCitation&gt;.</li>
+                    <li>A MedlineCitation has a list of Keywords, which contain Major Topics.</li>
+                    <li>Cooccurrences of Major Topics may form an interesting network.</li>
+                </ul>
+                </div>
+                <img data-src="images/medline-data.png" style="float:right;width:50%"/>
+            </section>
+            <section>
+                <h1>Code Time</h1>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Spark GraphX &mdash; Example: Maven Dependencies</h3>
+                <img data-src="images/maven-deps-ni-labels.png" width="500"/>
+                <p>source: <a href="https://github.com/ogirardot/meta-deps">https://github.com/ogirardot/meta-deps</a></p>
+            </section>
+            <section>
+                <h3>Data</h3>
+                <ul>
+                <li>Directed graph of maven dependencies.</li>
+                <li>Data structure:</li>
+                    <img data-src="images/maven-deps-data.png" width="800"/>
+                </ul>
+            </section>
+            <section>
+                <h1>Code Time</h1>
+            </section>
+        </section>
+
+
     </div>
 </div>
 
