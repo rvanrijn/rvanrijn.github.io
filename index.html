@@ -59,10 +59,6 @@
         </section>
 
         <section>
-            <h3>How did we get here?</h3>
-        </section>
-
-        <section>
             <h2>What is Apache Spark?</h2>
             <ul>
                 <li>Apache Spark is a fast, general engine for large-scale data processing</li>
@@ -107,27 +103,7 @@
         </section>
 
         <section>
-            <h2>Execution model</h2>
-
-            <p>- Create DAG of RDDs to represent computation</p>
-
-            <p>- Create a logical execution plan for DAG</p>
-
-            <p>- Schedule and execute individual tasks</p>
-        </section>
-
-        <section>
             <h2>Spark Internals</h2>
-
-            <p>Resilient Distributed Datasets</p>
-            <br>
-            <img width="768" height="354" data-src="/images/rdd.png" alt="Down arrow">
-
-            <p>Spark’s core abstraction!</p>
-        </section>
-
-        <section>
-            <h2>RDD's</h2>
             <ul>
                 <li>RDD(Resilient Distributed Dataset)</li>
                 <p>-Resilient: if data in memory is lost, it can be recreated</p>
@@ -153,6 +129,16 @@
         </section>
 
         <section>
+            <h2>Execution model</h2>
+
+            <p>- Create DAG of RDDs to represent computation</p>
+
+            <p>- Create a logical execution plan for DAG</p>
+
+            <p>- Schedule and execute individual tasks</p>
+        </section>
+
+        <section>
             <h2>Transformations and Actions</h2>
 
             <p>RDDs support two types of operations</p>
@@ -165,7 +151,7 @@
         <section>
             <h2>Time to rock and roll!</h2>
             <ul>
-                <li>Spark Core: Spark101</li>
+                <li>Spark Core</li>
                 <li>Spark SQL</li>
                 <li>Spark MLlib</li>
                 <li>Spark Streaming</li>
