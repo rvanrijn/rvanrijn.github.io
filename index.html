@@ -7,7 +7,7 @@
     <title>reveal.js - The HTML Presentation Framework</title>
 
     <meta name="description" content="Introduction into Apache Spark">
-    <meta name="author" content="Casper Koning - Robert van Rijn">
+    <meta name="author" content="Robert van Rijn">
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -45,14 +45,13 @@
             <h1>Programming Experience</h1>
             <h3>Create a twitterbot with Scala and Akka</h3>
             <p>
-                <small>Created by <a href="http://vanrijn.io">Robert van Rijn</a>
-                </small>
+                <small>Created by <a href="http://vanrijn.io">Robert van Rijn</a></small>
             </p>
         </section>
 
         <section>
             <h3>You do need to be careful when writing a bot that you don't go against any of Twitter's spam policies.</h3>
-            <h3>They're listed in the Developer Rules of the Road:  </h3>
+            <h3>They're listed in the Developer Rules of the Road: <a href="https://dev.twitter.com/rest/public"></h3>
         </section>
 
         <section>
@@ -69,8 +68,7 @@
         <section>
             <h2>Libraries we will use:</h2>
 
-            <p>Twitter4J is an unofficial Java library for the Twitter API.
-With Twitter4J, you can easily integrate your Java application with the Twitter service. Twitter4J is an unofficial library.</p>
+            <p>Twitter4J is an unofficial Java library for the Twitter API. With Twitter4J, you can easily integrate your Java application with the Twitter service. Twitter4J is an unofficial library.</p>
             <br>
             <a href="#" class="navigate-down">
                     <img data-src="/images/twitter4j-logo.png" alt="Down arrow">
@@ -86,337 +84,22 @@ With Twitter4J, you can easily integrate your Java application with the Twitter 
         </section>
 
         <section>
-            <h2>RDD's</h2>
-            <ul>
-                <li>RDDs are immutable:</li>
-                <p>-Each stage of a transformation will create a new RDD</p>
-                <li>RDDs are lazy:</li>
-                <p>-A DAG (directed acyclic graph) of computation is constructed.</p>
-
-                <p>-The actual data is processed only when results are requested.</p>
-            </ul>
         </section>
 
         <section>
-            <h2>Transformations and Actions</h2>
-
-            <p>RDDs support two types of operations</p>
-            <img data-src="/images/transformations-and-action.png" alt="Down arrow">
-            </br>
-            <p>You can chain operations together, but keep in mind that the computation only runs when you call an
-                action.</p>
         </section>
 
         <section>
-            <h2>Time to rock and roll!</h2>
-            <ul>
-                <li>Spark Core</li>
-                <li>Spark SQL</li>
-                <li>Spark MLlib</li>
-                <li>Spark Streaming</li>
-                <li>Spark GraphX</li>
-            </ul>
         </section>
 
-        <section data-transition="slide">
-            <h2>nl.ncim.workshop.core</h2>
-            <ul>
-              <li>Transformations: map, flatmap, filter</li>
-              <li>Actions: reduceByKey, groupBy, take</li>
-            </ul>
-        </section>
-
-
-        <section data-transition="slide">
-            <h2>nl.ncim.workshop.sql</h2>
-            <ul>
-               <li>Structured data processing</li>
-               <li> It provides a programming abstraction called DataFrames and can also act as distributed SQL query engine.</li>
-               <li> DataFrames and SQL provide a common way to access a variety of data sources: </li>
-               <li>  including Hive, Avro, Parquet, ORC, JSON, and JDBC. You can even join data across these sources.</li>
-            </ul>
-        </section>
-
-        <section data-transition="slide">
-            <h2>Spark MLlib</h2>
-            <ul>
-                <li>Machine Learning Basics</li>
-                <li>Programming Abstractions in Spark MLlib</li>
-                <li>Example: Predicting Digits</li>
-                <li>Getting YOUR hands dirty</li>
-            </ul>
-        </section>
-        <section data-transition="slide">
-            <section>
-                <h3>Spark MLlib &mdash; Machine Learning Basics</h3>
-                </ul>
-                <img data-src="images/machineLearningPipeline.png"
-                     alt="Typical steps in a machine learning pipeline">
-            </section>
-            <section>
-                <h4>Gather and prepare data</h4>
-                <blockquote>"In Data Science, 80% of time is spent on data preparation, and the other 20% is spent on
-                    complaining about the need to prepare data"
-                </blockquote>
-            </section>
-            <section>
-                <h4>Select features</h4>
-                <blockquote>"In machine learning and statistics, feature selection, also known as variable selection,
-                    attribute selection or variable subset selection, is the process of selecting a subset of relevant
-                    features (variables, predictors) for use in model construction"
-                </blockquote>
-                <ul>
-                    <li>Current age for predicting the probability of ending up in hospital in the coming five years.
-                    </li>
-                    <li>$\frac{\text{weight}}{\text{length}^2}$ for predicting percentage of body fat.</li>
-                    <li>You fall in category $A$, so you are very likely to do $Z$.</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Train a model</h4>
-
-                <div>
-                    <img data-src="images/modelgraphs1.png" alt="Model examples" style="float:left" width="65%"/>
-                    <img data-src="images/J48_iris.jpg" alt="Iris decision tree" style="float:left" width="30%"/>
-                </div>
-            </section>
-            <section>
-                <h4>Select the best model</h4>
-                <ul>
-                    <li>Train model with different parameters.</li>
-                    <li>Model might be too complex, or too simple.</li>
-                    <li>Evaluate model on some validation set and use cross-validation to find an appropriate model.
-                    </li>
-                </ul>
-                <img data-src="images/model-selection.png" alt="Model selection" width="300"/>
-            </section>
-            <section>
-                <h4>Predict</h4>
-                <img data-src="images/xkcdFlowChart.png" alt="Flow Chart"/>
-            </section>
-        </section>
-        <section data-transition="slide">
-            <section>
-                <h3>Spark MLlib &mdash; Programming Abstractions</h3>
-                <ul>
-                    <li>(Dense/Sparse) Vector</li>
-                    <li>LabeledPoint</li>
-                    <li>Matrix</li>
-                    <li>Rating</li>
-                    <li>Model classes</li>
-                    <li>Pipeline API</li>
-                </ul>
-            </section>
-            <section>
-                <h4>(Dense/Sparse) Vector</h4>
-                <ul>
-                    <li>A mathematical vector containing numbers.</li>
-                    <li>Both dense and sparse vectors.</li>
-                    <li>Constructed via the <code>mllib.linalg.Vectors</code> class.</li>
-                    <li>Do not provide arithmetic operations.</li>
-                </ul>
-                <pre><code>        val denseVec1 = Vectors.dense(1.0, 2.0, 3.0)
-        val denseVec2 = Vectors.dense(Array(1.0,2.0,3.0))
-        val sparseVec = Vectors.sparse(4, Array(0,2), Array(1.0, 2.0))</code></pre>
-            </section>
-            <section>
-                <h4>LabeledPoint</h4>
-                <blockquote>"LabeledPoint: A labeled data point for supervised learning algorithms such as
-                    classification and regression. Includes a feature vector and a label."
-                </blockquote>
-                <pre><code>             val lp = LabeledPoint(1,Vectors.dense(3.14,1.68,1.41))</code></pre>
-            </section>
-            <section>
-                <h4>Matrix</h4>
-                <ul>
-                    <li>Integer typed row and column indices</li>
-                    <li>Double values</li>
-                    <li>Different implementations for distribution purposes (RowMatrix, BlockMatrix, CoordinateMatrix,...).</li>
-                    <li>Dense and sparse variants</li>
-                </ul>
-                <img data-src="images/latex_matrix.png"/>
-            </section>
-            <section>
-                <h4>Rating</h4>
-                <blockquote>"Rating: A rating of a product by a user, used in the mllib.recommendation package for
-                    product recommendation."
-                </blockquote>
-                Nothing more than a
-                <pre><code>         case class Rating(user: Long, item: Long, rating: Double)</code></pre>
-            </section>
-            <section>
-                <h4>Model classes</h4>
-                <ul>
-                    <li>Work on RDD[Vector], RDD[LabeledPoint], etc.</li>
-                    <li>Often follow naming pattern: &lt;problem&gt;With&lt;Algorithm&gt;, e.g. LinearRegresionWithSGD.</li>
-                    <li>Either the model follows a builder pattern and has a run() method, or it has static train() and predict() methods:</li>
-                </ul>
-                <pre><code>val points: RDD[LabeledPoint] = // ...
-val lr = new LinearRegressionWithSGD()
-                    .setNumIterations(200)
-                    .setIntercept(true)
-val model = lr.run(points)</code></pre>
-
-                <pre><code>val model = DecisionTree.trainClassifier(
-                    input = data,
-                    numClasses = 10,
-                    categoricalFeaturesInfo = Map[Int, Int](),
-                    impurity = "gini",
-                    maxDepth = 15,
-                    maxBins = 5
-                    )</code></pre>
-            </section>
-            <section>
-                <h4>Pipeline API</h4>
-                <ul>
-                    <li>Advanced API for chaining machine learning operations in one workflow</li>
-                    <li>Uses the more advanced DataFrame features compared to RDD's of simple MLlib abstractions.</li>
-                    <li>Possible pipeline: Automated feature selection -> Model training -> Validation -> Model selection -> Prediction</li>
-                </ul>
-                <img data-src="images/machineLearningPipeline.png"/>
-            </section>
-        </section>
-        <section data-transition="slide">
-            <section>
-                <h3>Spark MLlib &mdash; Example: Predicting Digits</h3>
-                <ul>
-                    <li>42,000 drawings of digits.</li>
-                    <li>Given a drawing, predict the written digit.</li>
-                    <li>Classification problem.</li>
-                    <li>Use Decision Tree approach.</li>
-                </ul>
-                <img data-src="images/digitData.png" width="300"/>  <img data-src="images/digit.png" width="265"/>
-            </section>
-            <section>
-                <h1>CODE TIME</h1>
-            </section>
-        </section>
-        <section data-transition="slide">
-            <h2>nl.ncim.workshop.streaming</h2>
-            <li>Spark Streaming can read data from HDFS, Flume, Kafka, Twitter and ZeroMQ.</li>
-            <li>You can also define your own custom data sources.</li>
-        </section>
-
-
-        <section data-transition="slide">
-            <h2>Spark GraphX</h2>
-            <ul>
-                <li>Graph Fundamentals</li>
-                <li>Programming Abstractions in Spark GraphX</li>
-                <li>Example: Medline Topics</li>
-                <li>Example: Maven Dependencies</li>
-            </ul>
-        </section>
         <section>
-            <section>
-                <h3>Spark GraphX &mdash; Graph Fundamentals</h3>
-                <blockquote>"In the most common sense of the term, a graph is an ordered pair $G=(V,E)$ compromising a set $V$ of vertices together with a set $E$ of edges, which are 2-element subsets of $V$."</blockquote>
-                <ul>
-                    <li>Graphs are all about relationships between objects.</li>
-                    <li>Vertices are the objects we are interested in.</li>
-                    <li>Edges describe the relationship between two vertices.</li>
-                    <li>The alternate way of looking at data, allows us to ask different questions, or give answers to questions much easier. These questions are typically about relationships.</li>
-                </ul>
-            </section>
-            <section>
-                <img data-src="images/graph.png" width="700"/>
-            </section>
-        </section>
-        <section>
-            <section>
-                <h3>Spark GraphX &mdash; Programming Abstractions in Spark</h3>
-                <blockquote>"In the most common sense of the term, a graph is an ordered pair $G=(V,E)$ compromising a set $V$ of vertices together with a set $E$ of edges, which are 2-element subsets of $V$."</blockquote>
-                <p align="left">Spark GraphX uses these terms as well, and has programming abstractions for them.</p>
-            </section>
-            <section>
-                <h3>Graph</h3>
-                <pre><code>class Graph[VD, ED] {
-        val vertices: VertexRDD[VD]
-        val edges: EdgeRDD[ED]
-}</code></pre>
-                <p>A very rich wrapper around a collection of vertices and edges.</p>
-            </section>
-            <section>
-                <h3>Vertices</h3>
-                <ul>
-                    <li>A VertexRDD[VD] is a rich wrapper around an RDD[(VertexID, VD)].</li>
-                    <li>A VertexID is a unique 64-bits Long. It allows for easy lookups and other operations on Vertices.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Edges</h3>
-<pre><code>case class Edge[ED] (srcId: VertexId, dstId: VertexId = 0,attr: ED)</code></pre>
-                <ul>
-                    <li>An EdgeRDD[ED] is an RDD[Edge[ED].</li>
-                    <li>An Edge[ED] is basically a 3-tuple of (VertexId, VertexId, ED), where the edge is directed and ED is the type of relationship between the two Vertices.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>EdgeTriplet</h3>
-                <img data-src="images/triplet.png"/>
-            </section>
-            <section>
-                <h3>Constructing a Graph</h3>
-                <p>Several options for creating a Graph in GraphX:</p>
-                <ul>
-                    <li>Graph.apply(vertices,edges), or Graph(vertices,edges) results in a Graph instance.</li>
-                    <li>The Graph object also has fromEdges() and fromEdgeTuples() methods for Graph instantiation.</li>
-                    <li>GraphLoader.edgeListFile() provides a way to load a graph from a list of edges on disk.</li>
-                </ul>
-            </section>
-        </section>
-        <section>
-            <section>
-                <h3>Spark GraphX &mdash; Example: Medline Topics</h3>
-                <img data-src="images/medline.png" width="600"/>
-                <p>source: <a href="ftp://ftp.nlm.nih.gov/nlmdata/sample/medline">ftp://ftp.nlm.nih.gov/nlmdata/sample/medline</a></p>
-            </section>
-            <section>
-                <h3>Data</h3>
-                <div style="float:left;width:45%">
-                <ul>
-                    <li>XML documents &lt;MedlineCitation&gt;.</li>
-                    <li>A MedlineCitation has a list of Keywords, which contain Major Topics.</li>
-                    <li>Cooccurrences of Major Topics may form an interesting network.</li>
-                </ul>
-                </div>
-                <img data-src="images/medline-data.png" style="float:right;width:50%"/>
-            </section>
-            <section>
-                <h1>Code Time</h1>
-            </section>
-        </section>
-        <section>
-            <section>
-                <h3>Spark GraphX &mdash; Example: Maven Dependencies</h3>
-                <img data-src="images/maven-deps-ni-labels.png" width="500"/>
-                <p>source: <a href="https://github.com/ogirardot/meta-deps">https://github.com/ogirardot/meta-deps</a></p>
-            </section>
-            <section>
-                <h3>Data</h3>
-                <ul>
-                <li>Directed graph of maven dependencies.</li>
-                <li>Data structure:</li>
-                    <img data-src="images/maven-deps-data.png" width="800"/>
-                </ul>
-            </section>
-            <section>
-                <img data-src="images/mavenEntry.png">
-            </section>
-            <section>
-                <img data-src="images/rowToTuple.png">
-            </section>
-            <section>
-                <img data-src="images/appendWithUniqueId.png">
-            </section>
-            <section>
-                <img data-src="images/establishRelationships.png">
-            </section>
-            <section>
-                <h1>Code Time</h1>
-            </section>
         </section>
 
+        <section>
+        </section>
+
+        <section>
+        </section>
 
     </div>
 </div>
