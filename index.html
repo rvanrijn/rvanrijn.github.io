@@ -59,7 +59,7 @@
                 <li>Get information from RSS feeds</li>
                 <li>Shorten the RSS feed url</li>
                 <li>Send messages to the akka-twitter server</li>
-                <li>Receive and handle messages we receive</li>
+                <li>Receive and handle messages</li>
             </ul>
         </section>
 
@@ -121,6 +121,26 @@
                 <li>Server</li>
                 <li>Client</li>
             </ul>
+        </section>
+
+        <section>
+           <pre><code data-trim>
+akka {
+  //loglevel = "DEBUG"
+  actor {
+    provider = "akka.remote.RemoteActorRefProvider"
+  }
+  remote {
+    transport = "akka.remote.netty.NettyRemoteTransport"
+    //log-sent-messages = on
+    //log-received-messages = on
+    netty {
+      hostname = "127.0.0.1"
+      port = 5150
+    }
+  }
+}
+           </code></pre>
         </section>
 
           <section>
