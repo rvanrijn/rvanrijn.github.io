@@ -124,7 +124,7 @@
         </section>
 
         <section>
-           <p>Server configuration</p>
+           <p>Server application.conf</p>
            <pre><code data-trim>
 akka {
   //loglevel = "DEBUG"
@@ -145,7 +145,7 @@ akka {
         </section>
 
         <section>
-           <p>Client configuration</p>
+           <p>Client application.conf</p>
            <pre><code data-trim>
 akka {
   //loglevel = "DEBUG"
@@ -168,7 +168,7 @@ akka {
         <section>
            <p>How do I create a Actor system?</p>
            <pre><code data-trim>
-  implicit val system = ActorSystem("LocalSystem")
+  val system = ActorSystem("LocalSystem")
   val localActor = system.actorOf(Props[LocalActor], name = "LocalActor") 
            </code></pre>
         </section>
@@ -178,6 +178,26 @@ akka {
            <p>How do I get the Akka remote server address?</p>
            <pre><code data-trim>
   val remote = context.actorSelection("akka://HelloRemoteSystem@127.0.0.1:5150/user/RemoteActor")
+           </code></pre>
+        </section>
+
+        <section>
+            <p>Open de client project and write some code to talk to the server.</p>
+        </section>
+
+        <section>
+           <p>How do I deal with incoming messages</p>
+           <pre><code data-trim>
+  def receive = {
+    case "START" =>
+      remote ! "Hello from the LocalActor"
+    case msg: String =>
+      println(s"LocalActor received message: '$msg'")
+      if (counter < 5) {
+        sender ! "Hello back to you"
+        counter += 1
+      }
+  }
            </code></pre>
         </section>
 
