@@ -111,7 +111,7 @@
             <h3>Open the Examples project</h3>
             <ul>
                 <li>Get RSS feed</li>
-                <li>Shorten the url.</li>
+                <li>Shorten the url</li>
             </ul>
         </section>
 
@@ -165,6 +165,21 @@ akka {
            </code></pre>
         </section>
 
+        <section>
+           <p>How do I create a Actor system?</p>
+           <pre><code data-trim>
+  implicit val system = ActorSystem("LocalSystem")
+  val localActor = system.actorOf(Props[LocalActor], name = "LocalActor") 
+           </code></pre>
+        </section>
+
+
+        <section>
+           <p>How do I get the Akka remote server address?</p>
+           <pre><code data-trim>
+  val remote = context.actorSelection("akka://HelloRemoteSystem@127.0.0.1:5150/user/RemoteActor")
+           </code></pre>
+        </section>
 
         <section>
             <p>Open de client project and write some code to talk to the server.</p>
