@@ -55,6 +55,18 @@
         </section>
 
         <section>
+            <h2>What are we going todo?</h2>
+            <ul>
+                <li>Where are going to build clients, that:</li>
+                <li>1) Getter information from RSS feeds</li>
+                <li>2) Shorten the RSS feed urls</li>
+                <li>3) Send messages to the tweet to the akka-twitter server<li>
+                <li>4) Receive and handle messages we receive from the server or mayve from others?!</li>
+            </ul>
+
+        </section>
+
+        <section>
             <h2>Libraries we will use:</h2>
 
             <p>Twitter4J is an unofficial Java library for the Twitter API. With Twitter4J, you can easily integrate your Java application with the Twitter service. Twitter4J is an unofficial library.</p>
@@ -65,36 +77,37 @@
         </section>
 
         <section>
-            <h2>Basic interactions</h2>
+            <h2>Libraries we will use:</h2>
+
+            <p>ROME is a set of RSS and Atom Utilities for Java that is open source under the Apache 2.0 license. ROME includes a set of parsers and generators for the various flavors of syndication feeds, as well as converters to convert from one format to another.</p>
+            <br>
+            <a href="#" class="navigate-down">
+                    <img data-src="/images/romelogo.png" alt="Down arrow">
+            </a>
+        </section>
+        
+        <section>
+            <h2>The project files contain three sbt subprojects</h2>
             <ul>
-                <li>Searching, timelines, posting.</li>
-                <li>Replying to tweets written to you.</li>
+                <li>Examples</li>
+                <li>Client</li>
+                <li>Server</li>
             </ul>
         </section>
 
         <section>
-            <p>#1 StatusStreamer</p>
+            <h2>#1 Open the Examples project</h2>
             <ul>
-                <li>TwitterStreamFactory</li>
-                <li>Add Listener</li>
-                <li>Get 2 sec sample from the twitter firehose</li>
+                <li>Get RSS feed</li>
+                <li>Shorten the url.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Get Rss feeds and sent a tweet</h2>
+            <p>#2 Have a look at the other sbt projects</p>
             <ul>
-                <li>URL shortener</li>
-                <li>Tweet a message with shorten url.</li>
-            </ul>
-        </section>
-
-        <section>
-            <p>#2 RssFeedParser</p>
-            <ul>
-                <li>Get depdendency that deals with feeds: rometools</li>
-                <li>Get url with rss feeds</li>
-                <li>Parse into url shortener</li>
+                <li>Server</li>
+                <li>Client</li>
             </ul>
             <a href="#" class="navigate-down">
                     <img data-src="/images/shortener.jpg" alt="Down arrow">
