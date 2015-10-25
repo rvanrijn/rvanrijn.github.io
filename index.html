@@ -138,7 +138,7 @@ akka {
     //log-sent-messages = on
     //log-received-messages = on
     netty {
-      hostname = "127.0.0.1"
+      hostname = "SERVER.IP.ADDRESS"
       port = 5150
     }
   }
@@ -159,7 +159,7 @@ akka {
     //log-sent-messages = on
     //log-received-messages = on
     netty {
-      hostname = "127.0.0.1"
+      hostname = "YOUR.IP.ADDRESS"
       port = 0
     }
   }
@@ -179,7 +179,7 @@ akka {
         <section>
            <p>How do I get the Akka remote server address?</p>
            <pre><code data-trim>
-  val remote = context.actorSelection("akka://HelloRemoteSystem@127.0.0.1:5150/user/RemoteActor")
+  val remote = context.actorSelection("akka://HelloRemoteSystem@SERVER.IP.ADDRESS:5150/user/RemoteActor")
            </code></pre>
         </section>
 
