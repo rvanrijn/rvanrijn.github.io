@@ -128,6 +128,7 @@
             </ul>
         </section>
 
+<<<<<<< HEAD
         <section>
            <p>Server application.conf</p>
            <pre><code data-trim>
@@ -147,6 +148,171 @@ akka {
   }
 }
            </code></pre>
+=======
+        <section data-transition="slide" data-background="#4d1a65">
+            <h2>Spark MLlib</h2>
+            <ul>
+                <li>Machine Learning Basics</li>
+                <li>Programming Abstractions in Spark MLlib</li>
+                <li>Example: Predicting Digits</li>
+                <li>Getting YOUR hands dirty</li>
+            </ul>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Machine Learning Basics</h3>
+                </ul>
+                <img data-src="images/machineLearningPipeline.jpg"
+                     alt="Typical steps in a machine learning pipeline">
+            </section>
+            <section>
+                <h4>Gather and prepare data</h4>
+                <blockquote>"In Data Science, 80% of time is spent on data preparation, and the other 20% is spent on
+                    complaining about the need to prepare data"
+                </blockquote>
+            </section>
+            <section>
+                <h4>Select features</h4>
+                <blockquote>"In machine learning and statistics, feature selection, also known as variable selection,
+                    attribute selection or variable subset selection, is the process of selecting a subset of relevant
+                    features (variables, predictors) for use in model construction"
+                </blockquote>
+                <ul>
+                    <li>Current age for predicting the probability of ending up in hospital in the coming five years.
+                    </li>
+                    <li>$\frac{\text{weight}}{\text{length}^2}$ for predicting percentage of body fat.</li>
+                    <li>You fall in category $A$, so you are very likely to do $Z$.</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Train a model</h4>
+
+                <div>
+                    <img data-src="images/modelgraphs1.png" alt="Model examples" style="float:left" width="65%"/>
+                    <img data-src="images/J48_iris.jpg" alt="Iris decision tree" style="float:left" width="30%"/>
+                </div>
+            </section>
+            <section>
+                <h4>Select the best model</h4>
+                <ul>
+                    <li>Train model with different parameters.</li>
+                    <li>Model might be too complex, or too simple.</li>
+                    <li>Evaluate model on some validation set and use cross-validation to find an appropriate model.
+                    </li>
+                </ul>
+                <img data-src="images/model-selection.png" alt="Model selection" width="300"/>
+            </section>
+            <section>
+                <h4>Predict</h4>
+                <img data-src="images/xkcdFlowChart.png" alt="Flow Chart"/>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Programming Abstractions</h3>
+                <ul>
+                    <li>(Dense/Sparse) Vector</li>
+                    <li>LabeledPoint</li>
+                    <li>Matrix</li>
+                    <li>Rating</li>
+                    <li>Model classes</li>
+                    <li>Pipeline API</li>
+                </ul>
+            </section>
+            <section>
+                <h4>(Dense/Sparse) Vector</h4>
+                <ul>
+                    <li>A mathematical vector containing numbers.</li>
+                    <li>Both dense and sparse vectors.</li>
+                    <li>Constructed via the <code>mllib.linalg.Vectors</code> class.</li>
+                    <li>Do not provide arithmetic operations.</li>
+                </ul>
+                <pre><code>        val denseVec1 = Vectors.dense(1.0, 2.0, 3.0)
+        val denseVec2 = Vectors.dense(Array(1.0,2.0,3.0))
+        val sparseVec = Vectors.sparse(4, Array(0,2), Array(1.0, 2.0))</code></pre>
+            </section>
+            <section>
+                <h4>LabeledPoint</h4>
+                <blockquote>"LabeledPoint: A labeled data point for supervised learning algorithms such as
+                    classification and regression. Includes a feature vector and a label."
+                </blockquote>
+                <pre><code>             val lp = LabeledPoint(1,Vectors.dense(3.14,1.68,1.41))</code></pre>
+            </section>
+            <section>
+                <h4>Matrix</h4>
+                <ul>
+                    <li>Integer typed row and column indices</li>
+                    <li>Double values</li>
+                    <li>Different implementations for distribution purposes (RowMatrix, BlockMatrix, CoordinateMatrix,...).</li>
+                    <li>Dense and sparse variants</li>
+                </ul>
+                <img data-src="images/latex_matrix.png"/>
+            </section>
+            <section>
+                <h4>Rating</h4>
+                <blockquote>"Rating: A rating of a product by a user, used in the mllib.recommendation package for
+                    product recommendation."
+                </blockquote>
+                Nothing more than a
+                <pre><code>         case class Rating(user: Long, item: Long, rating: Double)</code></pre>
+            </section>
+            <section>
+                <h4>Model classes</h4>
+                <ul>
+                    <li>Work on RDD[Vector], RDD[LabeledPoint], etc.</li>
+                    <li>Often follow naming pattern: &lt;problem&gt;With&lt;Algorithm&gt;, e.g. LinearRegresionWithSGD.</li>
+                    <li>Either the model follows a builder pattern and has a run() method, or it has static train() and predict() methods:</li>
+                </ul>
+                <pre><code>val points: RDD[LabeledPoint] = // ...
+val lr = new LinearRegressionWithSGD()
+                    .setNumIterations(200)
+                    .setIntercept(true)
+val model = lr.run(points)</code></pre>
+
+                <pre><code>val model = DecisionTree.trainClassifier(
+                    input = data,
+                    numClasses = 10,
+                    categoricalFeaturesInfo = Map[Int, Int](),
+                    impurity = "gini",
+                    maxDepth = 15,
+                    maxBins = 5
+                    )</code></pre>
+            </section>
+            <section>
+                <h4>Pipeline API</h4>
+                <ul>
+                    <li>Advanced API for chaining machine learning operations in one workflow</li>
+                    <li>Uses the more advanced DataFrame features compared to RDD's of simple MLlib abstractions.</li>
+                    <li>Possible pipeline: Automated feature selection -> Model training -> Validation -> Model selection -> Prediction</li>
+                </ul>
+                <img data-src="images/machineLearningPipeline.jpg"/>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Example: Predicting Digits</h3>
+                <ul>
+                    <li>42,000 drawings of digits.</li>
+                    <li>Given a drawing, predict the written digit.</li>
+                    <li>Classification problem.</li>
+                    <li>Use Decision Tree approach.</li>
+                </ul>
+                <img data-src="images/digitData.png" width="300"/>  <img data-src="images/digit.png" width="265"/>
+            </section>
+            <section>
+                <h1>CODE TIME</h1>
+            </section>
+        </section>
+        <section data-transition="slide" data-background="#4d1a65">
+            <section>
+                <h3>Spark MLlib &mdash; Getting YOUR hands dirty</h3>
+            </section>
+        </section>
+        <section data-transition="slide">
+            <h2>nl.ncim.workshop.streaming</h2>
+            <li>Spark Streaming can read data from HDFS, Flume, Kafka, Twitter and ZeroMQ.</li>
+            <li>You can also define your own custom data sources.</li>
+>>>>>>> parent of 1691f27... added additional images
         </section>
 
         <section>
@@ -187,6 +353,7 @@ akka {
         </section>
 
         <section>
+<<<<<<< HEAD
            <p>How do I deal with incoming messages</p>
            <pre><code data-trim>
   def receive = {
@@ -200,6 +367,24 @@ akka {
       }
   }
            </code></pre>
+=======
+            <section>
+                <h3>Spark GraphX &mdash; Example: Maven Dependencies</h3>
+                <img data-src="images/maven-deps-ni-labels.png" width="500"/>
+                <p>source: <a href="https://github.com/ogirardot/meta-deps">https://github.com/ogirardot/meta-deps</a></p>
+            </section>
+            <section>
+                <h3>Data</h3>
+                <ul>
+                <li>Directed graph of maven dependencies.</li>
+                <li>Data structure:</li>
+                    <img data-src="images/maven-deps-data.png" width="800"/>
+                </ul>
+            </section>
+            <section>
+                <h1>Code Time</h1>
+            </section>
+>>>>>>> parent of 1691f27... added additional images
         </section>
 
         <section>
